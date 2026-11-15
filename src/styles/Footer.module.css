@@ -1,0 +1,108 @@
+.footer {
+  background: #0f2019;
+  padding: 48px 0 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 40px;
+}
+
+.brand p {
+  font-size: 0.82rem;
+  color: rgba(174, 183, 169, 0.7);
+  line-height: 1.75;
+  max-width: 280px;
+}
+
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.logoIcon {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logoText {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+}
+
+.col h4 {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 16px;
+}
+
+.col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.col a {
+  font-size: 0.82rem;
+  color: rgba(174, 183, 169, 0.7);
+  transition: color 0.2s;
+}
+
+.col a:hover {
+  color: var(--ivory);
+}
+
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copy {
+  font-size: 0.78rem;
+  color: rgba(174, 183, 169, 0.5);
+}
+
+.kbli {
+  font-size: 0.72rem;
+  color: rgba(174, 183, 169, 0.4);
+  text-align: right;
+}
+
+@media (max-width: 1024px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .kbli {
+    text-align: center;
+  }
+}

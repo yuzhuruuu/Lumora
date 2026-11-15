@@ -1,0 +1,127 @@
+/* ─── Reset & Custom Properties ─────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --forest:    #193329;
+  --ivory:     #F3EEE5;
+  --olive:     #898B68;
+  --champagne: #D8BE9A;
+  --sage:      #AEB7A9;
+  --white:     #ffffff;
+  --forest-alt: #3d5147;
+
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  --section-pad: 100px 0;
+  --container:   1160px;
+  --radius:      4px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--ivory);
+  color: var(--forest);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a   { text-decoration: none; color: inherit; }
+
+/* ─── Layout Helpers ─────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ─── Typography Utilities ───────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--forest);
+  margin-bottom: 20px;
+}
+.section-title.light { color: var(--ivory); }
+
+.section-lead {
+  font-size: 1rem;
+  color: var(--olive);
+  max-width: 560px;
+  line-height: 1.75;
+}
+.section-lead.light { color: var(--sage); }
+
+.divider {
+  width: 48px;
+  height: 2px;
+  background: var(--champagne);
+  margin: 20px 0;
+}
+
+/* ─── Buttons ────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--champagne);
+  color: var(--forest);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 14px 32px;
+  border-radius: var(--radius);
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-primary:hover { background: #c9ae8a; transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-block;
+  color: var(--ivory);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(243,238,229,0.3);
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { color: var(--champagne); border-color: var(--champagne); }
+
+/* ─── Scroll Fade Animation ──────────────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+              transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.fade-up.visible { opacity: 1; transform: none; }
+.fade-up.d1 { transition-delay: 0.1s; }
+.fade-up.d2 { transition-delay: 0.2s; }
+.fade-up.d3 { transition-delay: 0.3s; }
+.fade-up.d4 { transition-delay: 0.4s; }
+
+/* ─── Responsive breakpoints ─────────────────────────── */
+@media (max-width: 768px) {
+  :root { --section-pad: 72px 0; }
+  .container { padding: 0 20px; }
+}

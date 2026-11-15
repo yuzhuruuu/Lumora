@@ -1,0 +1,127 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background 0.35s, box-shadow 0.35s;
+}
+
+.scrolled {
+  background: rgba(25, 51, 41, 0.97);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logoIcon {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logoText {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(243, 238, 229, 0.75);
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: var(--champagne);
+}
+
+.cta {
+  background: var(--champagne);
+  color: var(--forest) !important;
+  padding: 10px 22px;
+  border-radius: 3px;
+  font-weight: 600 !important;
+  transition: background 0.2s !important;
+}
+
+.cta:hover {
+  background: #c9ae8a !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ivory);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: rgba(25, 51, 41, 0.98);
+    padding: 24px 32px;
+    gap: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .links.open {
+    display: flex;
+  }
+}
