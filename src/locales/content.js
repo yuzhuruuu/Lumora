@@ -15,7 +15,7 @@ export const content = {
       eyebrow: 'Software House · B2B · UMKM',
       titleLine1: 'Rapi dulu,',
       titleLine2: 'besar kemudian.',
-      desc: 'PT Lumora Inovasi Utama mengembangkan website dan sistem informasi berbasis web yang disesuaikan dengan kebutuhan operasional UMKM — praktis, terjangkau, dan terus berkembang bersama usaha Anda.',
+      desc: 'PT Lumora Inovasi Utama mengembangkan website dan sistem informasi berbasis web yang disesuaikan dengan kebutuhan operasional UMKM yang praktis, terjangkau, dan terus berkembang bersama usaha Anda.',
       ctaPrimary: 'Mulai Konsultasi',
       ctaSecondary: 'Lihat Layanan',
       stats: [
@@ -32,7 +32,7 @@ export const content = {
       cardSub: 'Membantu UMKM membangun pengelolaan bisnis yang lebih terstruktur melalui solusi digital yang sesuai kebutuhan dan tahapan perkembangan usaha.',
       badge: 'Software House · IT',
       desc1: 'PT Lumora Inovasi Utama adalah perusahaan software house yang berfokus pada pengembangan website dan sistem informasi berbasis web untuk Usaha Mikro, Kecil, dan Menengah (UMKM) di Indonesia.',
-      desc2: 'Kami memahami bahwa setiap UMKM memiliki kebutuhan yang berbeda — itulah mengapa setiap solusi yang kami kembangkan disesuaikan dengan skala, proses, dan permasalahan spesifik usaha Anda.',
+      desc2: 'Kami memahami bahwa setiap UMKM memiliki kebutuhan yang berbeda, itulah mengapa setiap solusi yang kami kembangkan disesuaikan dengan skala, proses, dan permasalahan spesifik usaha Anda.',
       features: [
         {
           key: 'scale',
@@ -59,7 +59,7 @@ export const content = {
     services: {
       tag: 'Layanan Kami',
       title: 'Solusi digital\nuntuk setiap kebutuhan',
-      lead: 'Dari website profil bisnis hingga sistem informasi terintegrasi — kami menyediakan solusi yang dapat dimulai dari kebutuhan paling mendasar usaha Anda.',
+      lead: 'Dari website profil bisnis hingga sistem informasi terintegrasi, kami menyediakan solusi yang dapat dimulai dari kebutuhan paling mendasar usaha Anda.',
       items: [
         {
           num: '01',
@@ -79,14 +79,14 @@ export const content = {
           num: '03',
           key: 'inventory',
           name: 'Sistem Informasi Inventaris',
-          desc: 'Kelola barang masuk, barang keluar, dan pantau jumlah persediaan secara akurat — tidak perlu khawatir selisih stok lagi.',
+          desc: 'Kelola barang masuk, barang keluar, dan pantau jumlah persediaan secara akurat, tidak perlu khawatir selisih stok lagi.',
           tags: ['Stok', 'Barang Masuk', 'Laporan'],
         },
         {
           num: '04',
           key: 'order',
           name: 'Sistem Pemesanan',
-          desc: 'Kelola pesanan dari pelanggan secara terstruktur — cocok untuk usaha kuliner, pre-order, atau bisnis berbasis pesanan via chat.',
+          desc: 'Kelola pesanan dari pelanggan secara terstruktur, cocok untuk usaha kuliner, pre-order, atau bisnis berbasis pesanan via chat.',
           tags: ['Pesanan', 'Pre-Order', 'Tracking'],
         },
         {
@@ -256,7 +256,7 @@ export const content = {
       addon: {
         label: 'Layanan Tambahan',
         name: 'E-Commerce Add-on',
-        desc: 'Tambahkan kemampuan toko online ke website atau sistem yang ada — termasuk keranjang belanja mandiri, manajemen status pengiriman, dan payment gateway. Diimplementasikan bertahap sesuai kesiapan bisnis.',
+        desc: 'Tambahkan kemampuan toko online ke website atau sistem yang ada, termasuk keranjang belanja mandiri, manajemen status pengiriman, dan payment gateway. Diimplementasikan bertahap sesuai kesiapan bisnis.',
         btn: 'Pelajari Lebih',
       },
       disclaimer: '* Semua estimasi investasi ditentukan melalui diskusi awal. Komponen penentu meliputi kompleksitas logika sistem, integrasi pihak ketiga, dan durasi pengerjaan.',
