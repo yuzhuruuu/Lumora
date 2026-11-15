@@ -1,24 +1,33 @@
 /* ─── Reset & Custom Properties ─────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
 
 :root {
-  --forest:    #193329;
-  --ivory:     #F3EEE5;
-  --olive:     #898B68;
-  --champagne: #D8BE9A;
-  --sage:      #AEB7A9;
-  --white:     #ffffff;
+  --forest:     #193329;
+  --ivory:      #F3EEE5;
+  --olive:      #898B68;
+  --champagne:  #D8BE9A;
+  --sage:       #AEB7A9;
+  --white:      #ffffff;
   --forest-alt: #3d5147;
 
   --font-heading: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Inter', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
 
   --section-pad: 100px 0;
   --container:   1160px;
   --radius:      4px;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   font-family: var(--font-body);
@@ -26,10 +35,24 @@ body {
   color: var(--forest);
   line-height: 1.65;
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
-img { display: block; max-width: 100%; }
-a   { text-decoration: none; color: inherit; }
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
 
 /* ─── Layout Helpers ─────────────────────────────────── */
 .container {
@@ -43,7 +66,7 @@ a   { text-decoration: none; color: inherit; }
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   font-weight: 600;
-  line-height: 1.15;
+  line-height: 1.18;
 }
 
 .tag {
@@ -58,16 +81,17 @@ h1, h2, h3, h4 {
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.85rem, 5vw, 3rem);
   color: var(--forest);
   margin-bottom: 20px;
+  letter-spacing: -0.01em;
 }
 .section-title.light { color: var(--ivory); }
 
 .section-lead {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
   color: var(--olive);
-  max-width: 560px;
+  max-width: 580px;
   line-height: 1.75;
 }
 .section-lead.light { color: var(--sage); }
@@ -81,7 +105,9 @@ h1, h2, h3, h4 {
 
 /* ─── Buttons ────────────────────────────────────────── */
 .btn-primary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--champagne);
   color: var(--forest);
   font-family: var(--font-body);
@@ -90,12 +116,19 @@ h1, h2, h3, h4 {
   letter-spacing: 0.06em;
   padding: 14px 32px;
   border-radius: var(--radius);
-  transition: background 0.2s, transform 0.2s;
+  transition: all 0.2s ease;
+  min-height: 46px;
+  text-align: center;
 }
-.btn-primary:hover { background: #c9ae8a; transform: translateY(-1px); }
+.btn-primary:hover {
+  background: #c9ae8a;
+  transform: translateY(-1px);
+}
 
 .btn-ghost {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--ivory);
   font-family: var(--font-body);
   font-size: 13px;
@@ -103,25 +136,42 @@ h1, h2, h3, h4 {
   letter-spacing: 0.06em;
   padding: 14px 0;
   border-bottom: 1px solid rgba(243,238,229,0.3);
-  transition: border-color 0.2s, color 0.2s;
+  transition: all 0.2s ease;
+  min-height: 46px;
 }
-.btn-ghost:hover { color: var(--champagne); border-color: var(--champagne); }
+.btn-ghost:hover {
+  color: var(--champagne);
+  border-color: var(--champagne);
+}
 
 /* ─── Scroll Fade Animation ──────────────────────────── */
 .fade-up {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
-              transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
+              transform 0.65s cubic-bezier(0.16,1,0.3,1);
+  will-change: opacity, transform;
 }
 .fade-up.visible { opacity: 1; transform: none; }
-.fade-up.d1 { transition-delay: 0.1s; }
-.fade-up.d2 { transition-delay: 0.2s; }
-.fade-up.d3 { transition-delay: 0.3s; }
-.fade-up.d4 { transition-delay: 0.4s; }
+.fade-up.d1 { transition-delay: 0.08s; }
+.fade-up.d2 { transition-delay: 0.16s; }
+.fade-up.d3 { transition-delay: 0.24s; }
+.fade-up.d4 { transition-delay: 0.32s; }
 
-/* ─── Responsive breakpoints ─────────────────────────── */
+/* ─── Responsive Breakpoints ─────────────────────────── */
+@media (max-width: 1024px) {
+  :root { --section-pad: 80px 0; }
+  .container { padding: 0 28px; }
+}
+
 @media (max-width: 768px) {
-  :root { --section-pad: 72px 0; }
+  :root { --section-pad: 64px 0; }
   .container { padding: 0 20px; }
+}
+
+@media (max-width: 480px) {
+  :root { --section-pad: 52px 0; }
+  .container { padding: 0 16px; }
+  .tag { font-size: 10px; margin-bottom: 12px; }
+  .divider { width: 36px; margin: 16px 0; }
 }

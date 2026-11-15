@@ -1,24 +1,9 @@
+import { useLang } from '../context/LanguageContext'
 import styles from '../styles/Footer.module.css'
 
-const services = [
-  { href: '#services', label: 'Website Profil Bisnis' },
-  { href: '#services', label: 'Website Katalog Produk' },
-  { href: '#services', label: 'Sistem Inventaris' },
-  { href: '#services', label: 'Sistem Pemesanan' },
-  { href: '#services', label: 'Pencatatan Transaksi' },
-  { href: '#services', label: 'E-Commerce Add-on' },
-]
-const company = [
-  { href: '#about', label: 'Tentang Lumora' },
-  { href: '#solutions', label: 'Solusi UMKM' },
-  { href: '#vision', label: 'Visi & Misi' },
-  { href: '#why', label: 'Keunggulan' },
-  { href: '#process', label: 'Alur Kerja Sama' },
-  { href: '#pricing', label: 'Paket Layanan' },
-  { href: '#contact', label: 'Hubungi Kami' },
-]
-
 export default function Footer() {
+  const { t } = useLang()
+
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -28,28 +13,36 @@ export default function Footer() {
               <img src="/Logo/Light/Logo Lumora fix (1).png" alt="Logo Lumora" className={styles.logoIcon} />
               <img src="/Logo/Light/Group 7.png" alt="Lumora Inovasi Utama" className={styles.logoText} />
             </div>
-            <p>
-              PT Lumora Inovasi Utama adalah software house yang membantu UMKM tumbuh lebih
-              terstruktur melalui solusi teknologi berbasis web yang disesuaikan dengan kebutuhan usaha.
-            </p>
+            <p>{t.footer.desc}</p>
           </div>
           <div className={styles.col}>
-            <h4>Layanan</h4>
+            <h4>{t.footer.servicesCol}</h4>
             <ul>
-              {services.map(l => <li key={l.label}><a href={l.href}>{l.label}</a></li>)}
+              {t.services.items.map(s => (
+                <li key={s.key}>
+                  <a href="#services">{s.name}</a>
+                </li>
+              ))}
             </ul>
           </div>
           <div className={styles.col}>
-            <h4>Perusahaan</h4>
+            <h4>{t.footer.companyCol}</h4>
             <ul>
-              {company.map(l => <li key={l.label}><a href={l.href}>{l.label}</a></li>)}
+              {t.nav.links.map(l => (
+                <li key={l.href}>
+                  <a href={l.href}>{l.label}</a>
+                </li>
+              ))}
+              <li>
+                <a href="#contact">{t.nav.cta}</a>
+              </li>
             </ul>
           </div>
         </div>
 
         <div className={styles.bottom}>
-          <p className={styles.copy}>© 2025 PT Lumora Inovasi Utama. Seluruh hak dilindungi.</p>
-          <p className={styles.kbli}>KBLI 62199 · 62191 · 62209 &nbsp;|&nbsp; Teknologi Informasi</p>
+          <p className={styles.copy}>{t.footer.copy}</p>
+          <p className={styles.kbli}>{t.footer.kbli}</p>
         </div>
       </div>
     </footer>

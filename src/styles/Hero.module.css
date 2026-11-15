@@ -3,9 +3,11 @@
   min-height: 100svh;
   background: var(--forest);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   overflow: hidden;
 }
+
 .hero::before {
   content: '';
   position: absolute; inset: 0;
@@ -31,39 +33,54 @@
   align-items: center;
   position: relative;
   z-index: 2;
-  padding: 120px 0 120px;
+  padding: 120px 0 130px;
 }
 
 .eyebrow {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
-.eyebrowLine { width: 32px; height: 1px; background: var(--champagne); flex-shrink: 0; }
+.eyebrowLine {
+  width: 32px;
+  height: 1px;
+  background: var(--champagne);
+  flex-shrink: 0;
+}
 .eyebrow span {
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 0.22em; text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: var(--champagne);
 }
 
 .title {
-  font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
   color: var(--ivory);
-  line-height: 1.08;
+  line-height: 1.1;
   margin-bottom: 24px;
 }
-.title em { font-style: italic; color: var(--champagne); }
-
-.desc {
-  font-size: 1rem;
-  color: var(--sage);
-  max-width: 420px;
-  line-height: 1.8;
-  margin-bottom: 44px;
+.title em {
+  font-style: italic;
+  color: var(--champagne);
 }
 
-.actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.desc {
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  color: var(--sage);
+  max-width: 460px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
 .visual {
   display: flex;
@@ -72,6 +89,7 @@
 }
 .logoMark {
   width: 240px;
+  max-width: 80%;
   filter: drop-shadow(0 20px 60px rgba(216,190,154,0.2));
   animation: float 6s ease-in-out infinite;
 }
@@ -86,6 +104,8 @@
   bottom: 0; left: 0; right: 0;
   border-top: 1px solid rgba(243,238,229,0.1);
   z-index: 2;
+  background: rgba(25, 51, 41, 0.4);
+  backdrop-filter: blur(8px);
 }
 .statsGrid {
   display: grid;
@@ -94,27 +114,88 @@
 .stat {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 28px 32px;
+  gap: 4px;
+  padding: 24px 28px;
   border-right: 1px solid rgba(243,238,229,0.1);
 }
 .stat:last-child { border-right: none; }
 .statNum {
   font-family: var(--font-heading);
-  font-size: 2rem; font-weight: 600;
-  color: var(--champagne); line-height: 1;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 600;
+  color: var(--champagne);
+  line-height: 1;
 }
 .statLabel {
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--sage);
 }
 
 @media (max-width: 1024px) {
-  .grid { grid-template-columns: 1fr; padding-bottom: 160px; }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 110px 0 140px;
+  }
   .visual { display: none; }
 }
+
 @media (max-width: 768px) {
-  .statsGrid { grid-template-columns: 1fr 1fr; }
-  .stat { border-right: none; border-bottom: 1px solid rgba(243,238,229,0.08); }
+  .hero {
+    min-height: auto;
+  }
+  .grid {
+    padding: 96px 0 40px;
+  }
+  .title {
+    font-size: clamp(2rem, 8.5vw, 2.8rem);
+    margin-bottom: 18px;
+  }
+  .desc {
+    margin-bottom: 30px;
+  }
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .actions a {
+    width: 100%;
+    justify-content: center;
+  }
+  .statsBar {
+    position: relative;
+    border-top: 1px solid rgba(243,238,229,0.1);
+    background: rgba(18, 38, 30, 0.95);
+  }
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stat {
+    padding: 18px 16px;
+    border-right: 1px solid rgba(243,238,229,0.08);
+    border-bottom: 1px solid rgba(243,238,229,0.08);
+  }
+  .stat:nth-child(2n) {
+    border-right: none;
+  }
+  .stat:nth-child(3),
+  .stat:nth-child(4) {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    padding: 84px 0 32px;
+  }
+  .statNum {
+    font-size: 1.5rem;
+  }
+  .statLabel {
+    font-size: 9px;
+  }
 }

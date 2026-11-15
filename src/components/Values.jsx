@@ -1,24 +1,33 @@
+import { useLang } from '../context/LanguageContext'
+import { Award, Zap, Gem, ShieldCheck, HeartHandshake } from 'lucide-react'
 import styles from '../styles/Values.module.css'
 
-const values = [
-  { icon: '🎯', title: 'Professional', desc: 'Kompetensi dan kredibilitas dalam setiap aspek layanan yang kami berikan.' },
-  { icon: '💡', title: 'Innovative',   desc: 'Solusi teknologi yang relevan dan terus berkembang mengikuti kebutuhan bisnis.' },
-  { icon: '✨', title: 'Elegant',      desc: 'Identitas yang berkelas, minimalis, dan terstruktur dalam setiap tampilan.' },
-  { icon: '🔒', title: 'Trustworthy',  desc: 'Kepercayaan dibangun melalui kualitas, keamanan, dan konsistensi layanan.' },
-  { icon: '🤲', title: 'Approachable', desc: 'Tetap ramah dan mudah dijangkau oleh seluruh pelaku UMKM Indonesia.' },
-]
+const iconMap = {
+  professional: Award,
+  innovative: Zap,
+  elegant: Gem,
+  trustworthy: ShieldCheck,
+  approachable: HeartHandshake,
+}
 
 export default function Values() {
+  const { t } = useLang()
+
   return (
     <section id="values" className={styles.section}>
       <div className={styles.grid}>
-        {values.map(v => (
-          <div key={v.title} className={styles.cell}>
-            <div className={styles.icon}>{v.icon}</div>
-            <h3>{v.title}</h3>
-            <p>{v.desc}</p>
-          </div>
-        ))}
+        {t.values.items.map(v => {
+          const IconComponent = iconMap[v.key] || Award
+          return (
+            <div key={v.key} className={styles.cell}>
+              <div className={styles.iconWrap}>
+                <IconComponent className={styles.iconSvg} size={24} strokeWidth={1.7} />
+              </div>
+              <h3>{v.title}</h3>
+              <p>{v.desc}</p>
+            </div>
+          )
+        })}
       </div>
     </section>
   )

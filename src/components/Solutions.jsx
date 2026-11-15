@@ -1,75 +1,32 @@
 import { useState } from 'react'
 import { useFadeUp } from '../hooks/useFadeUp'
+import { useLang } from '../context/LanguageContext'
+import { AlertCircle, CheckCircle2, Lightbulb, Check, X } from 'lucide-react'
 import styles from '../styles/Solutions.module.css'
-
-const useCases = [
-  {
-    id: 'kuliner',
-    badge: 'Prioritas Utama',
-    sector: 'UMKM Kuliner & F&B',
-    subtitle: 'Katering, bakery, coffee shop, & usaha kuliner berbasis pre-order',
-    problemTitle: 'Tantangan Operasional yang Sering Dialami:',
-    problems: [
-      'Pesanan via chat WhatsApp sering tercecer atau terlewat saat jam ramai.',
-      'Menu dan varian produk sulit dijelaskan berulang-ulang ke calon pembeli.',
-      'Rekap transaksi harian dan nota masih ditulis manual di buku catatan.',
-      'Sulit memantau kuota pesanan pre-order yang masuk setiap harinya.',
-    ],
-    solutionTitle: 'Solusi Digital dari Lumora:',
-    solutions: [
-      'Website katalog menu digital yang menarik, jelas, dan mudah diakses via link/QR.',
-      'Sistem pemesanan & form pre-order terstruktur yang langsung merekap pesanan.',
-      'Pencatatan status order (menunggu, diproses, selesai, terkirim).',
-      'Rekap transaksi otomatis untuk melihat omzet harian dan mingguan tanpa hitung manual.',
-    ],
-    outcome: 'Hasil: Pesanan tertata rapi, tidak ada order tercecer, waktu admin berkurang hingga 70%.',
-  },
-  {
-    id: 'sembako',
-    badge: 'Pasar Sekunder',
-    sector: 'UMKM Sembako & Retail',
-    subtitle: 'Toko sembako, kelontong, mini mart, & perdagangan retail',
-    problemTitle: 'Tantangan Operasional yang Sering Dialami:',
-    problems: [
-      'Sering terjadi selisih antara stok barang fisik di rak dengan catatan di buku.',
-      'Keterlambatan restock karena barang habis tanpa disadari sebelumnya.',
-      'Pencatatan barang masuk dan keluar dari supplier masih konvensional.',
-      'Kesulitan melacak riwayat transaksi harian dan laba bersih per kategori barang.',
-    ],
-    solutionTitle: 'Solusi Digital dari Lumora:',
-    solutions: [
-      'Sistem informasi inventaris berbasis web yang ringan dan mudah digunakan.',
-      'Pencatatan keluar-masuk barang secara real-time dengan status mutasi jelas.',
-      'Notifikasi pengingat untuk persediaan barang yang mulai menipis (minimum stock).',
-      'Rekap penjualan harian terintegrasi untuk memantau performa toko secara berkala.',
-    ],
-    outcome: 'Hasil: Selisih stok terminimalisir, stok selalu terpantau, operasional toko lebih terkendali.',
-  },
-]
 
 export default function Solutions() {
   const ref = useFadeUp()
+  const { t } = useLang()
   const [activeTab, setActiveTab] = useState('kuliner')
-  const current = useCases.find(c => c.id === activeTab)
+  const current = t.solutions.tabs.find(c => c.id === activeTab) || t.solutions.tabs[0]
 
   return (
     <section id="solutions" className={styles.section} ref={ref}>
       <div className="container">
         <div className={styles.header}>
-          <span className="tag">Simulasi Penerapan</span>
-          <h2 className="section-title fade-up">
-            Dirancang untuk kebutuhan<br />riil di lapangan
+          <span className="tag">{t.solutions.tag}</span>
+          <h2 className="section-title fade-up" style={{ whiteSpace: 'pre-line' }}>
+            {t.solutions.title}
           </h2>
           <div className="divider" style={{ margin: '20px auto' }} />
           <p className="section-lead fade-up" style={{ margin: '0 auto' }}>
-            Berdasarkan analisis pasar dan riset operasional UMKM di Indonesia, Lumora menghadirkan
-            solusi terfokus yang menyasar permasalahan paling mendesak pada setiap jenis usaha.
+            {t.solutions.lead}
           </p>
         </div>
 
         {/* Tab switch */}
         <div className={`${styles.tabs} fade-up`}>
-          {useCases.map(c => (
+          {t.solutions.tabs.map(c => (
             <button
               key={c.id}
               className={`${styles.tabBtn} ${activeTab === c.id ? styles.tabBtnActive : ''}`}
@@ -95,12 +52,15 @@ export default function Solutions() {
             {/* Left: Problems */}
             <div className={styles.columnProblem}>
               <h4 className={styles.colHeaderProblem}>
-                <span className={styles.colIcon}>⚠️</span> {current.problemTitle}
+                <AlertCircle className={styles.colIconProblem} size={18} strokeWidth={2} />
+                <span>{current.problemTitle}</span>
               </h4>
               <ul className={styles.listProblem}>
                 {current.problems.map((p, idx) => (
                   <li key={idx}>
-                    <span className={styles.crossIcon}>✕</span>
+                    <div className={styles.crossWrap}>
+                      <X size={13} strokeWidth={2.4} />
+                    </div>
                     <span>{p}</span>
                   </li>
                 ))}
@@ -110,12 +70,15 @@ export default function Solutions() {
             {/* Right: Solutions */}
             <div className={styles.columnSolution}>
               <h4 className={styles.colHeaderSolution}>
-                <span className={styles.colIcon}>✨</span> {current.solutionTitle}
+                <CheckCircle2 className={styles.colIconSolution} size={18} strokeWidth={2} />
+                <span>{current.solutionTitle}</span>
               </h4>
               <ul className={styles.listSolution}>
                 {current.solutions.map((s, idx) => (
                   <li key={idx}>
-                    <span className={styles.checkIcon}>✓</span>
+                    <div className={styles.checkWrap}>
+                      <Check size={13} strokeWidth={2.4} />
+                    </div>
                     <span>{s}</span>
                   </li>
                 ))}
@@ -124,7 +87,9 @@ export default function Solutions() {
           </div>
 
           <div className={styles.outcomeBar}>
-            <span className={styles.outcomeIcon}>💡</span>
+            <div className={styles.outcomeIconWrap}>
+              <Lightbulb size={20} strokeWidth={2} className={styles.outcomeIcon} />
+            </div>
             <p className={styles.outcomeText}>{current.outcome}</p>
           </div>
         </div>

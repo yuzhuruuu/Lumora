@@ -1,45 +1,29 @@
 import { useFadeUp } from '../hooks/useFadeUp'
+import { useLang } from '../context/LanguageContext'
+import { Check, Store } from 'lucide-react'
 import styles from '../styles/Pricing.module.css'
-
-const plans = [
-  {
-    plan: 'Website', name: 'Starter', price: 'Fleksibel',
-    note: 'Harga disesuaikan kebutuhan. Konsultasi gratis.',
-    features: ['Website profil bisnis','Halaman beranda & kontak','Informasi layanan/produk','Desain responsif (mobile-friendly)','Domain & hosting (opsional)'],
-    featured: false,
-  },
-  {
-    plan: 'Website', name: 'Business', price: 'Fleksibel',
-    note: 'Paket lengkap untuk usaha yang ingin tampil profesional secara online.',
-    features: ['Semua fitur Starter','Katalog produk / menu digital','Halaman galeri & portofolio','Form pemesanan atau reservasi','Integrasi WhatsApp','Panduan penggunaan'],
-    featured: true, badge: 'Paling Populer',
-  },
-  {
-    plan: 'Sistem Informasi', name: 'Custom Web System', price: 'Custom',
-    note: 'Dikembangkan khusus sesuai proses bisnis Anda.',
-    features: ['Sistem inventaris barang','Sistem pemesanan / pre-order','Pencatatan & rekap transaksi','Laporan operasional','Multi-user (opsional)','Pelatihan penggunaan'],
-    featured: false,
-  },
-]
 
 export default function Pricing() {
   const ref = useFadeUp()
+  const { t } = useLang()
 
   return (
     <section id="pricing" className={styles.section} ref={ref}>
       <div className="container">
 
         <div className={`${styles.header} fade-up`}>
-          <span className="tag">Paket Layanan</span>
-          <h2 className="section-title">Pilih paket yang sesuai<br />dengan kebutuhan usaha</h2>
+          <span className="tag">{t.pricing.tag}</span>
+          <h2 className="section-title" style={{ whiteSpace: 'pre-line' }}>
+            {t.pricing.title}
+          </h2>
           <div className="divider" style={{ margin: '20px auto' }} />
           <p className="section-lead" style={{ margin: '0 auto' }}>
-            Harga dan fitur dapat disesuaikan berdasarkan kebutuhan dan kompleksitas sistem yang diinginkan.
+            {t.pricing.lead}
           </p>
         </div>
 
         <div className={styles.grid}>
-          {plans.map((p, i) => (
+          {t.pricing.plans.map((p, i) => (
             <div
               key={p.name}
               className={`${styles.card} ${p.featured ? styles.featured : ''} fade-up d${i + 1}`}
@@ -51,35 +35,45 @@ export default function Pricing() {
               <div className={styles.note}>{p.note}</div>
               <div className={styles.divider} />
               <ul className={styles.features}>
-                {p.features.map(f => <li key={f}>{f}</li>)}
+                {p.features.map(f => (
+                  <li key={f}>
+                    <Check size={14} strokeWidth={2.4} className={styles.checkIcon} />
+                    <span>{f}</span>
+                  </li>
+                ))}
               </ul>
               <a
                 href="#contact"
                 className={`${styles.btn} ${p.featured ? styles.btnFilled : styles.btnOutline}`}
               >
-                {p.featured ? 'Mulai Sekarang' : 'Konsultasi'}
+                {p.btn}
               </a>
             </div>
           ))}
 
           <div className={`${styles.addon} fade-up d3`}>
-            <div>
-              <div className={styles.addonLabel}>Layanan Tambahan</div>
-              <div className={styles.addonName}>E-Commerce Add-on 🛍️</div>
-              <div className={styles.addonDesc}>
-                Tambahkan fitur toko online ke website atau sistem yang sudah ada — termasuk keranjang belanja,
-                manajemen pesanan, dan integrasi pembayaran. Dikembangkan bertahap sesuai kesiapan usaha Anda.
+            <div className={styles.addonMain}>
+              <div className={styles.addonIconBadge}>
+                <Store size={22} strokeWidth={1.8} />
+              </div>
+              <div>
+                <div className={styles.addonLabel}>{t.pricing.addon.label}</div>
+                <div className={styles.addonName}>{t.pricing.addon.name}</div>
+                <div className={styles.addonDesc}>{t.pricing.addon.desc}</div>
               </div>
             </div>
-            <a href="#contact" className={`${styles.btn} ${styles.btnOutline}`} style={{ whiteSpace: 'nowrap', padding: '14px 28px' }}>
-              Pelajari Lebih
+            <a
+              href="#contact"
+              className={`${styles.btn} ${styles.btnOutline}`}
+              style={{ whiteSpace: 'nowrap', padding: '14px 28px' }}
+            >
+              {t.pricing.addon.btn}
             </a>
           </div>
         </div>
 
         <p className={styles.disclaimer}>
-          * Semua harga bersifat estimasi dan ditentukan melalui diskusi kebutuhan.
-          Komponen harga meliputi kompleksitas sistem, jumlah halaman/fitur, dan durasi pengembangan.
+          {t.pricing.disclaimer}
         </p>
       </div>
     </section>

@@ -1,10 +1,15 @@
 .section {
   padding: var(--section-pad);
   background: var(--forest);
-  position: relative; overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
-.header { text-align: center; max-width: 520px; margin: 0 auto 72px; }
+.header {
+  text-align: center;
+  max-width: 540px;
+  margin: 0 auto 72px;
+}
 
 .steps {
   display: grid;
@@ -12,35 +17,145 @@
   gap: 0;
   position: relative;
 }
+
+/* Connecting track behind the numbers */
 .steps::before {
   content: '';
-  position: absolute; top: 36px; left: 10%; right: 10%;
-  height: 1px; background: rgba(216,190,154,0.2); z-index: 0;
+  position: absolute;
+  top: 38px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(216, 190, 154, 0.2) 0%,
+    rgba(216, 190, 154, 0.5) 50%,
+    rgba(216, 190, 154, 0.2) 100%
+  );
+  z-index: 1;
 }
 
 .step {
-  display: flex; flex-direction: column;
-  align-items: center; text-align: center;
-  padding: 0 20px; position: relative; z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+  z-index: 2;
 }
-.num {
-  width: 72px; height: 72px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(216,190,154,0.25);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-heading); font-size: 1.5rem; font-weight: 600;
-  color: var(--champagne); margin-bottom: 20px;
-  transition: background 0.3s, border-color 0.3s;
-}
-.step:hover .num { background: rgba(216,190,154,0.1); border-color: var(--champagne); }
-.step h3 { font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--ivory); margin-bottom: 10px; }
-.step p  { font-size: 0.8rem; color: var(--sage); line-height: 1.65; }
 
-@media (max-width: 1024px) {
-  .steps { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .steps::before { display: none; }
+.numWrap {
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
 }
-@media (max-width: 768px) {
-  .steps { grid-template-columns: 1fr; }
+
+.num {
+  width: 76px;
+  height: 76px;
+  /* Solid opaque dark green background: line NEVER cuts through! */
+  background: #193329;
+  border: 1.5px solid rgba(216, 190, 154, 0.35);
+  /* 10px solid background mask around the circle */
+  box-shadow: 0 0 0 10px #193329;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--champagne);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.step:hover .num {
+  border-color: var(--champagne);
+  color: var(--ivory);
+  background: #204235;
+  box-shadow: 0 0 0 10px #193329, 0 0 25px rgba(216, 190, 154, 0.25);
+  transform: scale(1.06);
+}
+
+.stepTitle {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ivory);
+  margin-bottom: 10px;
+}
+
+.stepDesc {
+  font-size: 0.82rem;
+  color: var(--sage);
+  line-height: 1.65;
+}
+
+/* Tablet & Mobile responsive card flow */
+@media (max-width: 960px) {
+  .header { margin-bottom: 44px; }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .steps::before { display: none; }
+
+  .step {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 20px;
+    padding: 22px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(216, 190, 154, 0.15);
+    border-radius: var(--radius);
+    transition: all 0.25s ease;
+  }
+  .step:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--champagne);
+  }
+
+  .numWrap {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .num {
+    width: 52px;
+    height: 52px;
+    font-size: 1.3rem;
+    box-shadow: none;
+    border-color: rgba(216, 190, 154, 0.4);
+  }
+
+  .stepTitle {
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+  }
+
+  .stepDesc {
+    font-size: 0.84rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .step {
+    padding: 18px 16px;
+    gap: 14px;
+  }
+  .num {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+  .stepTitle {
+    font-size: 1.05rem;
+  }
+  .stepDesc {
+    font-size: 0.8rem;
+  }
 }

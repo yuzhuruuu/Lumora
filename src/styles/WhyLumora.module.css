@@ -37,4 +37,21 @@
 .row p  { font-size: 0.875rem; color: var(--sage); line-height: 1.7; }
 .row strong { color: var(--ivory); font-weight: 500; }
 
-@media (max-width: 1024px) { .grid { grid-template-columns: 1fr; gap: 48px; } }
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+@media (max-width: 768px) {
+  .visual { padding: 34px 24px; gap: 16px; }
+  .visualTitle { font-size: 1.35rem; }
+  .item { gap: 16px; padding: 22px 0; }
+  .num { font-size: 1.3rem; min-width: 28px; }
+  .item h3 { font-size: 1.1rem; }
+  .item p { font-size: 0.84rem; }
+  .row p { font-size: 0.84rem; }
+}
+
+@media (max-width: 480px) {
+  .visual { padding: 26px 18px; }
+  .item { gap: 12px; }
+}

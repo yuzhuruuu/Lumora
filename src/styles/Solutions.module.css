@@ -5,7 +5,7 @@
 
 .header {
   text-align: center;
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto 50px;
 }
 
@@ -47,10 +47,6 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--champagne);
-}
-
-.tabBtnActive .tabBadge {
   color: var(--champagne);
 }
 
@@ -113,43 +109,53 @@
 }
 
 .columnProblem {
-  background: #faf7f2;
+  background: #faf6f4;
   border-radius: var(--radius);
   padding: 28px;
-  border-left: 3px solid #d97768;
+  border-left: 3px solid #c2594a;
 }
 
 .colHeaderProblem {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  color: #a33c2d;
-  margin-bottom: 18px;
+  color: #9c3b2e;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+}
+
+.colIconProblem {
+  color: #c2594a;
+  flex-shrink: 0;
 }
 
 .listProblem {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .listProblem li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 0.85rem;
+  gap: 12px;
+  font-size: 0.86rem;
   color: #4a3e3d;
   line-height: 1.6;
 }
 
-.crossIcon {
-  color: #d97768;
-  font-weight: bold;
-  font-size: 0.85rem;
+.crossWrap {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(194, 89, 74, 0.15);
+  color: #c2594a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -163,52 +169,74 @@
 
 .colHeaderSolution {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--forest);
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+}
+
+.colIconSolution {
+  color: var(--forest);
+  flex-shrink: 0;
 }
 
 .listSolution {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .listSolution li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 0.85rem;
+  gap: 12px;
+  font-size: 0.86rem;
   color: var(--forest-alt);
   line-height: 1.6;
 }
 
-.checkIcon {
+.checkWrap {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(25, 51, 41, 0.12);
   color: var(--forest);
-  font-weight: bold;
-  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 /* Outcome bar */
 .outcomeBar {
   margin-top: 32px;
-  padding: 16px 20px;
+  padding: 18px 24px;
   background: var(--forest);
   border-radius: var(--radius);
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
+}
+
+.outcomeIconWrap {
+  width: 36px;
+  height: 36px;
+  background: rgba(216, 190, 154, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .outcomeIcon {
-  font-size: 18px;
+  color: var(--champagne);
+  display: block;
 }
 
 .outcomeText {
@@ -218,15 +246,71 @@
   line-height: 1.5;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 880px) {
+  .tabs {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .tabBtn {
+    min-width: 100%;
+    padding: 14px 20px;
+  }
+  .tabTitle {
+    font-size: 1.15rem;
+  }
   .comparisonGrid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
   .displayCard {
-    padding: 28px 20px;
+    padding: 30px 22px;
   }
-  .tabBtn {
-    min-width: 100%;
+  .cardSector {
+    font-size: 1.55rem;
+  }
+  .columnProblem,
+  .columnSolution {
+    padding: 22px 18px;
+  }
+  .outcomeBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header { margin-bottom: 32px; }
+  .displayCard {
+    padding: 20px 14px;
+  }
+  .cardHeader {
+    padding-bottom: 18px;
+    margin-bottom: 22px;
+  }
+  .cardSector {
+    font-size: 1.35rem;
+  }
+  .cardSub {
+    font-size: 0.82rem;
+  }
+  .columnProblem,
+  .columnSolution {
+    padding: 16px 14px;
+  }
+  .colHeaderProblem,
+  .colHeaderSolution {
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+  }
+  .listProblem li,
+  .listSolution li {
+    font-size: 0.82rem;
+    gap: 10px;
+  }
+  .outcomeText {
+    font-size: 0.82rem;
   }
 }

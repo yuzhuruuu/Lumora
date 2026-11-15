@@ -1,13 +1,9 @@
+import { useLang } from '../context/LanguageContext'
 import styles from '../styles/Hero.module.css'
 
-const stats = [
-  { num: 'B2B',  label: 'Model Bisnis' },
-  { num: 'Web',  label: 'Platform Utama' },
-  { num: 'UMKM', label: 'Target Pasar' },
-  { num: '5+',   label: 'Jenis Layanan' },
-]
-
 export default function Hero() {
+  const { t } = useLang()
+
   return (
     <section id="hero" className={styles.hero}>
       <div className="container">
@@ -15,26 +11,25 @@ export default function Hero() {
           <div className={styles.content}>
             <div className={styles.eyebrow}>
               <span className={styles.eyebrowLine} />
-              <span>Software House · B2B · UMKM</span>
+              <span>{t.hero.eyebrow}</span>
             </div>
             <h1 className={styles.title}>
-              Rapi dulu,<br /><em>besar kemudian.</em>
+              {t.hero.titleLine1}<br />
+              <em>{t.hero.titleLine2}</em>
             </h1>
             <p className={styles.desc}>
-              PT Lumora Inovasi Utama mengembangkan website dan sistem informasi
-              berbasis web yang disesuaikan dengan kebutuhan operasional UMKM —
-              praktis, terjangkau, dan terus berkembang bersama usaha Anda.
+              {t.hero.desc}
             </p>
             <div className={styles.actions}>
-              <a href="#contact" className="btn-primary">Mulai Konsultasi</a>
-              <a href="#services" className="btn-ghost">Lihat Layanan &nbsp;→</a>
+              <a href="#contact" className="btn-primary">{t.hero.ctaPrimary}</a>
+              <a href="#services" className="btn-ghost">{t.hero.ctaSecondary} &nbsp;→</a>
             </div>
           </div>
 
           <div className={styles.visual}>
             <img
               src="/Logo/Light/Group 8.png"
-              alt="Lumora"
+              alt="Lumora Inovasi Utama"
               className={styles.logoMark}
             />
           </div>
@@ -44,7 +39,7 @@ export default function Hero() {
       <div className={styles.statsBar}>
         <div className="container">
           <div className={styles.statsGrid}>
-            {stats.map(s => (
+            {t.hero.stats.map(s => (
               <div key={s.label} className={styles.stat}>
                 <span className={styles.statNum}>{s.num}</span>
                 <span className={styles.statLabel}>{s.label}</span>
