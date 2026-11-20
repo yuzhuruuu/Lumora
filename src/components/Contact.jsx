@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useFadeUp } from '../hooks/useFadeUp'
 import { useLang } from '../context/LanguageContext'
-import { Mail, Code2, Building2, Target } from 'lucide-react'
+import { Mail, Globe, Code2, Building2, Target } from 'lucide-react'
 import styles from '../styles/Contact.module.css'
 
 const iconMap = {
   email: Mail,
+  website: Globe,
   industry: Code2,
   company: Building2,
   target: Target,
@@ -49,7 +50,20 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className={styles.itemLabel}>{it.label}</div>
-                      <div className={styles.itemVal}>{it.val}</div>
+                      <div className={styles.itemVal}>
+                        {it.link ? (
+                          <a
+                            href={it.link}
+                            target={it.link.startsWith('http') ? '_blank' : undefined}
+                            rel="noopener noreferrer"
+                            className={styles.itemLink}
+                          >
+                            {it.val}
+                          </a>
+                        ) : (
+                          it.val
+                        )}
+                      </div>
                     </div>
                   </div>
                 )

@@ -12,6 +12,23 @@
 
 .brand p { font-size: 0.84rem; color: rgba(174,183,169,0.7); line-height: 1.75; max-width: 320px; }
 
+.emailLine {
+  margin-top: 14px;
+}
+.emailLink {
+  display: inline-block;
+  font-size: 0.84rem;
+  color: var(--champagne);
+  text-decoration: underline;
+  text-decoration-color: rgba(216, 190, 154, 0.4);
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+}
+.emailLink:hover {
+  color: var(--ivory);
+  text-decoration-color: var(--ivory);
+}
+
 .logoWrap {
   display: flex;
   align-items: center;

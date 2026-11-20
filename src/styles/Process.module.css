@@ -13,8 +13,8 @@
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
   position: relative;
 }
 
@@ -23,8 +23,8 @@
   content: '';
   position: absolute;
   top: 38px;
-  left: 10%;
-  right: 10%;
+  left: 6%;
+  right: 6%;
   height: 2px;
   background: linear-gradient(
     90deg,
@@ -40,7 +40,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 16px;
+  padding: 0 8px;
   position: relative;
   z-index: 2;
 }
@@ -91,6 +91,29 @@
   font-size: 0.82rem;
   color: var(--sage);
   line-height: 1.65;
+}
+
+.stepOutput {
+  margin-top: 12px;
+  font-size: 0.72rem;
+  color: var(--champagne);
+  background: rgba(216, 190, 154, 0.08);
+  border: 1px solid rgba(216, 190, 154, 0.2);
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  line-height: 1.45;
+  text-align: left;
+  width: 100%;
+}
+
+.outputBadge {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.66rem;
+  color: var(--ivory);
+  display: inline-block;
+  margin-right: 4px;
 }
 
 /* Tablet & Mobile responsive card flow */

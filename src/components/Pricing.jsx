@@ -32,6 +32,7 @@ export default function Pricing() {
               <div className={styles.plan}>{p.plan}</div>
               <div className={styles.name}>{p.name}</div>
               <div className={styles.price}>{p.price}</div>
+              {p.subPrice && <div className={styles.subPrice}>{p.subPrice}</div>}
               <div className={styles.note}>{p.note}</div>
               <div className={styles.divider} />
               <ul className={styles.features}>

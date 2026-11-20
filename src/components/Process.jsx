@@ -22,12 +22,17 @@ export default function Process() {
 
         <div className={styles.steps}>
           {t.process.steps.map((s, i) => (
-            <div key={s.num} className={`${styles.step} fade-up d${i % 3 + 1}`}>
+            <div key={s.num} className={`${styles.step} fade-up d${(i % 3) + 1}`}>
               <div className={styles.numWrap}>
                 <div className={styles.num}>{s.num}</div>
               </div>
               <h3 className={styles.stepTitle}>{s.title}</h3>
               <p className={styles.stepDesc}>{s.desc}</p>
+              {s.output && (
+                <div className={styles.stepOutput}>
+                  <span className={styles.outputBadge}>{t.process.outputLabel || 'Output'}:</span> {s.output}
+                </div>
+              )}
             </div>
           ))}
         </div>

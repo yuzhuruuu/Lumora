@@ -14,6 +14,11 @@ export default function Footer() {
               <img src="/Logo/Light/Group 7.png" alt="Lumora Inovasi Utama" className={styles.logoText} />
             </div>
             <p>{t.footer.desc}</p>
+            <p className={styles.emailLine}>
+              <a href="mailto:contact.lumorainovasi@gmail.com" className={styles.emailLink}>
+                contact.lumorainovasi@gmail.com
+              </a>
+            </p>
           </div>
           <div className={styles.col}>
             <h4>{t.footer.servicesCol}</h4>
